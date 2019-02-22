@@ -1,0 +1,15 @@
+---
+resources:
+- name: greeting
+  type: git
+  source:
+    uri: https://github.com/iumehara/concourse-stuff.git
+    branch: master
+
+jobs:
+- name: greeting
+  public: true
+  plan:
+  - get: greeting
+  - task: greeting
+    file: greeting/pipelines/greeting-task.yml
